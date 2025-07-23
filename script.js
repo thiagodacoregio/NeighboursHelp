@@ -1,41 +1,35 @@
-const form = document.getElementById('helpForm');
-const postsDiv = document.getElementById('posts');
+// Modal open/close logic
+const openModalBtn = document.getElementById('openModalBtn');
+const modal = document.getElementById('modal');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const helpForm = document.getElementById('helpForm');
+const confirmation = document.getElementById('confirmation');
 
-let posts = JSON.parse(localStorage.getItem('neighboursHelpPosts')) || [];
-
-function renderPosts() {
-  postsDiv.innerHTML = '';
-  posts.forEach((post, idx) => {
-    const postEl = document.createElement('div');
-    postEl.className = 'post';
-    postEl.innerHTML = `
-      <strong>${post.type === 'request' ? '🆘 Request' : '🤝 Offer'}</strong> by ${post.name}<br>
-      ${post.description}<br>
-      <em>Contact: ${post.contact}</em><br>
-      <button onclick="fulfillPost(${idx})">Mark as Fulfilled</button>
-    `;
-    postsDiv.appendChild(postEl);
-  });
-}
-
-window.fulfillPost = function(idx) {
-  posts.splice(idx, 1);
-  localStorage.setItem('neighboursHelpPosts', JSON.stringify(posts));
-  renderPosts();
-};
-
-form.onsubmit = function(e) {
+openModalBtn.onclick = function(e) {
   e.preventDefault();
-  const post = {
-    name: form.name.value,
-    type: form.type.value,
-    description: form.description.value,
-    contact: form.contact.value
-  };
-  posts.push(post);
-  localStorage.setItem('neighboursHelpPosts', JSON.stringify(posts));
-  renderPosts();
-  form.reset();
+  modal.style.display = 'block';
+  confirmation.style.display = 'none';
+  helpForm.style.display = 'block';
 };
 
-renderPosts();
+closeModalBtn.onclick = function() {
+  modal.style.display = 'none';
+};
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+
+// Form submission logic
+helpForm.onsubmit = function(e) {
+  e.preventDefault();
+  // Here you could send the data to a server or save it in localStorage
+  helpForm.style.display = 'none';
+  confirmation.style.display = 'block';
+  setTimeout(() => {
+    modal.style.display = 'none';
+    helpForm.reset();
+  }, 1800);
+};

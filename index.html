@@ -3,21 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>NeighboursHelp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>NeighboursHelp</h1>
-  <form id="helpForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <select id="type">
-      <option value="request">Request Help</option>
-      <option value="offer">Offer Help</option>
-    </select>
-    <input type="text" id="description" placeholder="Describe what you need/offer" required>
-    <input type="text" id="contact" placeholder="Contact Info" required>
-    <button type="submit">Post</button>
-  </form>
-  <div id="posts"></div>
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="container">               
+            <div class="logo">NeighboursHelp</div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">How it works</a>
+                <a href="#">Contact</a>
+            </nav>
+    </div>
+  </header>
+
+  <!-- ======= HERO SECTION ======= -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1>NeighboursHelp</h1>
+        <p>Connecting neighbors to help each other with daily tasks and mutual support.</p>
+        <button class="cta-btn" id="openModalBtn">Get Started</button>
+      </div>
+      <div class="hero-right">
+        <img src="./img/neighbour.png" alt="Community illustration">
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= MODAL ======= -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+      <h2>Post a Help Request or Offer</h2>
+      <form id="helpForm">
+        <input type="text" id="name" placeholder="Your name" required>
+        <select id="type">
+          <option value="request">Request Help</option>
+          <option value="offer">Offer Help</option>
+        </select>
+        <input type="text" id="description" placeholder="Describe what you need/offer" required>
+        <input type="text" id="contact" placeholder="Contact info" required>
+        <button type="submit">Post</button>
+      </form>
+      <div id="confirmation" style="display:none;">
+        Thank you! Your post has been submitted.
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
