@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NeighboursHelp</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>NeighboursHelp</h1>
+  <form id="helpForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <select id="type">
+      <option value="request">Request Help</option>
+      <option value="offer">Offer Help</option>
+    </select>
+    <input type="text" id="description" placeholder="Describe what you need/offer" required>
+    <input type="text" id="contact" placeholder="Contact Info" required>
+    <button type="submit">Post</button>
+  </form>
+  <div id="posts"></div>
+  <script src="script.js"></script>
+</body>
+</html>
