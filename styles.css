@@ -175,5 +175,48 @@ nav a:hover {
   }
   .hero-right {
     margin-top: 32px;
+
   }
+/* ======= MOBILE FIRST ======= */
+@media (max-width: 600px) {
+  .container, .hero-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 0 8px;
+    gap: 0;
+  }
+  header {
+    padding: 12px 0;
+  }
+  .logo {
+    font-size: 1.4em;
+  }
+  nav {
+    font-size: .8em;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 10px;
+    justify-content: center;
+    margin-top: 0;
+  }
+  .hero {
+    padding: 32px 0 20px 0;
+  }
+  .hero-left h1 {
+    font-size: 2em;
+  }
+  .hero-left p {
+    font-size: 1em;
+  }
+  .hero-right img {
+    max-width: 90vw;
+    min-width: 0;
+    margin-top: 18px;
+  }
+  .modal-content {
+    max-width: 95vw;
+    padding: 18px 6px 12px 6px;
+  }
+}
+
 }
