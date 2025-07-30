@@ -74,6 +74,44 @@ nav {
   background: rgba(64, 145, 108, 0.1);
 }
 
+/* ======= SECTION HEADERS ======= */
+.page-section > .container > h2 {
+  margin-bottom: 30px !important;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+  position: relative;
+}
+
+.page-section > .container > h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #40916c;
+}
+
+/* ======= CONTENT SPACING ======= */
+.about-content,
+.contact-content,
+.steps,
+.examples-section,
+.faq-section {
+  margin-top: 40px;
+  clear: both;
+}
+
+.examples-section h3,
+.faq-section h3,
+.contact-info h3,
+.contact-form h3 {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
 /* ======= HERO SECTION ======= */
 .hero {
   background: linear-gradient(135deg, #e9f5ee 0%, #d4f1de 100%);
@@ -164,10 +202,18 @@ nav {
 }
 
 /* ======= PAGE SECTIONS ======= */
+/* ======= PAGE SECTIONS ======= */
 .page-section {
   min-height: 100vh;
   padding: 120px 0 60px 0;
   background: #fff;
+}
+
+.page-section .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: block; /* ← MUDANÇA AQUI */
 }
 
 .page-section h2 {
@@ -175,6 +221,8 @@ nav {
   font-size: 2.5em;
   color: #1b4332;
   margin-bottom: 20px;
+  width: 100%; /* ← ADICIONE ESTA LINHA */
+  display: block; /* ← ADICIONE ESTA LINHA */
 }
 
 .section-subtitle {
@@ -185,23 +233,29 @@ nav {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  display: block; /* ← ADICIONE ESTA LINHA */
+  width: 100%; /* ← ADICIONE ESTA LINHA */
 }
 
 .cta-section {
   text-align: center;
   margin-top: 40px;
+  width: 100%; /* ← ADICIONE ESTA LINHA */
+  display: block; /* ← ADICIONE ESTA LINHA */
 }
 
 /* ======= ABOUT SECTION ======= */
 .about-content {
   display: flex;
   gap: 50px;
-  align-items: center;
+  align-items: flex-start; /* ← MUDANÇA AQUI */
   flex-wrap: wrap;
+  margin-top: 30px; /* ← ADICIONE ESTA LINHA */
 }
 
 .about-text {
   flex: 1 1 400px;
+  min-width: 300px; /* ← ADICIONE ESTA LINHA */
 }
 
 .about-text h3 {
@@ -209,25 +263,36 @@ nav {
   margin-bottom: 16px;
   margin-top: 30px;
   font-size: 1.4em;
+  display: block; /* ← ADICIONE ESTA LINHA */
+  width: 100%; /* ← ADICIONE ESTA LINHA */
 }
 
 .about-text h3:first-child {
   margin-top: 0;
 }
 
+.about-text p {
+  margin-bottom: 20px; /* ← ADICIONE ESTA LINHA */
+  display: block; /* ← ADICIONE ESTA LINHA */
+}
+
 .about-text ul {
   list-style: none;
   margin: 20px 0;
+  display: block; /* ← ADICIONE ESTA LINHA */
+  width: 100%; /* ← ADICIONE ESTA LINHA */
 }
 
 .about-text li {
   padding: 8px 0;
   font-size: 1.1em;
+  display: block; /* ← ADICIONE ESTA LINHA */
 }
 
 .about-image {
   flex: 1 1 300px;
   text-align: center;
+  min-width: 250px; /* ← ADICIONE ESTA LINHA */
 }
 
 .about-image img {
@@ -506,9 +571,17 @@ body.modal-open {
 
 /* ======= RESPONSIVE ======= */
 @media (max-width: 900px) {
-  .container, .hero-inner, .about-content, .contact-content {
+  .container {
     flex-direction: column;
     text-align: center;
+  }
+  
+  .hero-inner, 
+  .about-content, 
+  .contact-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
   }
   
   nav {
@@ -524,6 +597,18 @@ body.modal-open {
   .steps, .examples-grid, .faq-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* ← ADICIONE ESTAS LINHAS */
+  .about-text,
+  .contact-info,
+  .contact-form {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .about-image {
+    order: -1; /* Coloca a imagem antes do texto em mobile */
+  }
 }
 
 @media (max-width: 600px) {
@@ -533,6 +618,11 @@ body.modal-open {
   
   .page-section, .hero {
     padding: 100px 0 40px 0;
+  }
+  
+  .page-section h2 {
+    font-size: 2em; /* ← ADICIONE ESTA LINHA */
+    margin-bottom: 25px; /* ← ADICIONE ESTA LINHA */
   }
   
   .modal-content {
