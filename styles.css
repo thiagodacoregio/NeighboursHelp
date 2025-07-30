@@ -25,16 +25,28 @@ header {
   justify-content: space-between;
 }
 .logo {
+  display: flex;
+  align-items: center;
   font-size: 1.7em;
   font-weight: bold;
   color: #40916c;
   letter-spacing: 1px;
+  gap: 5px; /* space between logo and text */
+}
+
+.logo-img {
+  width: 38px;   /* adjust size as needed */
+  height: 38px;
+  object-fit: contain;
+  display: block;
+}
 }
 nav {
   display: flex;
-  gap: 28px;
+  gap:28px;
 }
 nav a {
+  padding: 8px 10px;
   color: #222;
   font-size: 1.2em;
   transition: color 0.2s; 
@@ -120,6 +132,11 @@ nav a:hover {
   max-width: 400px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.12);
   position: relative;
+
+  background-image: url('img/logo\ neighbourhelp.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 70px;
 }
 .close {
   color: #40916c;
