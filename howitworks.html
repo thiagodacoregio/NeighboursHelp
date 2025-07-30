@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How It Works - NeighboursHelp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="https://cdn.abacus.ai/images/7fe5e0c3-0bf6-4248-ac60-a0c527400df7.png" alt="NeighboursHelp logo" class="logo-img">
+        NeighboursHelp
+      </div>
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="howitworks.html" class="nav-link active">How it Works</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= HOW IT WORKS SECTION ======= -->
+  <section class="page-section">
+    <div class="container">
+      <h2>How It Works</h2>
+      <p class="section-subtitle">Getting started with NeighboursHelp is simple and straightforward</p>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Sign Up</h3>
+          <p>Create your profile and join your neighborhood community. It's free and takes just a few minutes.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Post or Browse</h3>
+          <p>Share what you need help with or browse requests from neighbors. From groceries to pet sitting, we've got you covered.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Connect</h3>
+          <p>Get in touch with neighbors through our secure messaging system and arrange to help each other.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Build Community</h3>
+          <p>Create lasting relationships and a stronger neighborhood through mutual support and friendship.</p>
+        </div>
+      </div>
+      
+      <div class="examples-section">
+        <h3>What Can You Share?</h3>
+        <div class="examples-grid">
+          <div class="example-item">
+            <span class="example-icon">🛒</span>
+            <h4>Grocery Shopping</h4>
+            <p>Help elderly neighbors or busy parents with shopping</p>
+          </div>
+          <div class="example-item">
+            <span class="example-icon">🐕</span>
+            <h4>Pet Care</h4>
+            <p>Walk dogs, feed cats, or pet-sit while neighbors are away</p>
+          </div>
+          <div class="example-item">
+            <span class="example-icon">🔧</span>
+            <h4>Home Repairs</h4>
+            <p>Share tools or help with small repairs and maintenance</p>
+          </div>
+          <div class="example-item">
+            <span class="example-icon">👶</span>
+            <h4>Childcare</h4>
+            <p>Babysit, school pickups, or playdates for working parents</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <button class="cta-btn" id="openModalBtn">Get Started Now</button>
+        <a href="contact.html" class="cta-btn secondary">Have Questions?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= MODAL ======= -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+      <h2>Post a Help Request or Offer</h2>
+      <form id="helpForm">
+        <input type="text" id="name" placeholder="Your name" required>
+        <select id="type">
+          <option value="request">Request Help</option>
+          <option value="offer">Offer Help</option>
+        </select>
+        <input type="text" id="description" placeholder="Describe what you need/offer" required>
+        <input type="text" id="contact" placeholder="Contact info" required>
+        <button type="submit">Post</button>
+      </form>
+      <div id="confirmation" style="display:none;">
+        Thank you! Your post has been submitted.
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
