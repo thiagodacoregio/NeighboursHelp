@@ -480,10 +480,6 @@ nav {
   position: relative;
   transform: scale(0.7);
   transition: transform 0.3s ease;
-  background-image: url('https://cdn.abacus.ai/images/7fe5e0c3-0bf6-4248-ac60-a0c527400df7.png');
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 60px 60px;
 }
 
 .modal.show .modal-content {
