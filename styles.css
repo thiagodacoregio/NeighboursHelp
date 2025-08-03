@@ -202,7 +202,6 @@ nav {
 }
 
 /* ======= PAGE SECTIONS ======= */
-/* ======= PAGE SECTIONS ======= */
 .page-section {
   min-height: 100vh;
   padding: 120px 0 60px 0;
@@ -213,7 +212,7 @@ nav {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
-  display: block; /* ← MUDANÇA AQUI */
+  display: block;
 }
 
 .page-section h2 {
@@ -221,8 +220,8 @@ nav {
   font-size: 2.5em;
   color: #1b4332;
   margin-bottom: 20px;
-  width: 100%; /* ← ADICIONE ESTA LINHA */
-  display: block; /* ← ADICIONE ESTA LINHA */
+  width: 100%;
+  display: block;
 }
 
 .section-subtitle {
@@ -233,29 +232,29 @@ nav {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  display: block; /* ← ADICIONE ESTA LINHA */
-  width: 100%; /* ← ADICIONE ESTA LINHA */
+  display: block;
+  width: 100%;
 }
 
 .cta-section {
   text-align: center;
   margin-top: 40px;
-  width: 100%; /* ← ADICIONE ESTA LINHA */
-  display: block; /* ← ADICIONE ESTA LINHA */
+  width: 100%;
+  display: block;
 }
 
 /* ======= ABOUT SECTION ======= */
 .about-content {
   display: flex;
   gap: 50px;
-  align-items: flex-start; /* ← MUDANÇA AQUI */
+  align-items: flex-start;
   flex-wrap: wrap;
-  margin-top: 30px; /* ← ADICIONE ESTA LINHA */
+  margin-top: 30px;
 }
 
 .about-text {
   flex: 1 1 400px;
-  min-width: 300px; /* ← ADICIONE ESTA LINHA */
+  min-width: 300px;
 }
 
 .about-text h3 {
@@ -263,8 +262,8 @@ nav {
   margin-bottom: 16px;
   margin-top: 30px;
   font-size: 1.4em;
-  display: block; /* ← ADICIONE ESTA LINHA */
-  width: 100%; /* ← ADICIONE ESTA LINHA */
+  display: block;
+  width: 100%;
 }
 
 .about-text h3:first-child {
@@ -272,27 +271,27 @@ nav {
 }
 
 .about-text p {
-  margin-bottom: 20px; /* ← ADICIONE ESTA LINHA */
-  display: block; /* ← ADICIONE ESTA LINHA */
+  margin-bottom: 20px;
+  display: block;
 }
 
 .about-text ul {
   list-style: none;
   margin: 20px 0;
-  display: block; /* ← ADICIONE ESTA LINHA */
-  width: 100%; /* ← ADICIONE ESTA LINHA */
+  display: block;
+  width: 100%;
 }
 
 .about-text li {
   padding: 8px 0;
   font-size: 1.1em;
-  display: block; /* ← ADICIONE ESTA LINHA */
+  display: block;
 }
 
 .about-image {
   flex: 1 1 300px;
   text-align: center;
-  min-width: 250px; /* ← ADICIONE ESTA LINHA */
+  min-width: 250px;
 }
 
 .about-image img {
@@ -603,7 +602,7 @@ body.modal-open {
   }
   
   .about-image {
-    order: -1; /* Coloca a imagem antes do texto em mobile */
+    order: -1;
   }
 }
 
@@ -617,8 +616,8 @@ body.modal-open {
   }
   
   .page-section h2 {
-    font-size: 2em; /* ← ADICIONE ESTA LINHA */
-    margin-bottom: 25px; /* ← ADICIONE ESTA LINHA */
+    font-size: 2em;
+    margin-bottom: 25px;
   }
   
   .modal-content {
