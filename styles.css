@@ -460,9 +460,10 @@ nav {
   left: 0; top: 0;
   width: 100%; height: 100%;
   overflow: auto;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .modal.show {
@@ -470,76 +471,256 @@ nav {
 }
 
 .modal-content {
-  background: #fff;
-  margin: 60px auto;
-  padding: 30px 24px 18px 24px;
-  border-radius: 15px;
-  max-width: 400px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  margin: 40px auto;
+  padding: 40px 30px;
+  border-radius: 20px;
+  max-width: 450px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   position: relative;
-  transform: scale(0.7);
-  transition: transform 0.3s ease;
+  transform: scale(0.7) translateY(-50px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid rgba(64, 145, 108, 0.1);
+  overflow: hidden;
 }
 
 .modal.show .modal-content {
-  transform: scale(1);
+  transform: scale(1) translateY(0);
+}
+
+/* Efeito de ondas no fundo */
+.modal-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(64, 145, 108, 0.05) 0%, transparent 70%);
+  animation: wave 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+}
+
+.modal-content h2 {
+  color: #1b4332;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.6em;
+  position: relative;
+  z-index: 2;
 }
 
 .close {
   color: #40916c;
   position: absolute;
-  right: 18px;
-  top: 12px;
-  font-size: 2em;
+  right: 20px;
+  top: 15px;
+  font-size: 2.2em;
   font-weight: bold;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.3s ease;
+  z-index: 3;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(64, 145, 108, 0.1);
 }
 
 .close:hover {
-  color: #2d6a4f;
+  color: #fff;
+  background: #40916c;
+  transform: rotate(90deg) scale(1.1);
 }
 
-#helpForm input, #helpForm select, #helpForm button {
+/* Formulário interativo */
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
-  margin-bottom: 12px;
-  padding: 12px;
+  padding: 15px 20px;
   border: 2px solid #e9ecef;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1em;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
-#helpForm input:focus, #helpForm select:focus {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   outline: none;
   border-color: #40916c;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.1);
+  transform: translateY(-2px);
 }
 
-#helpForm button {
-  background: #40916c;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-weight: 600;
-  border-radius: 25px;
+/* Labels flutuantes */
+.form-group label {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  color: #666;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  background: transparent;
+  z-index: 3;
 }
 
-#helpForm button:hover {
-  background: #2d6a4f;
-}
-
-#confirmation {
+/* Para inputs */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 15px;
+  font-size: 0.8em;
   color: #40916c;
-  margin-top: 12px;
+  background: #fff;
+  padding: 0 8px;
+  font-weight: 600;
+}
+
+/* Para select - apenas quando tem foco */
+.form-group select:focus + label {
+  top: -8px;
+  left: 15px;
+  font-size: 0.8em;
+  color: #40916c;
+  background: #fff;
+  padding: 0 8px;
+  font-weight: 600;
+}
+
+/* Para textarea */
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 15px;
+  font-size: 0.8em;
+  color: #40916c;
+  background: #fff;
+  padding: 0 8px;
+  font-weight: 600;
+}
+
+/* Classe especial para select com valor */
+.form-group.has-value label {
+  top: -8px !important;
+  left: 15px !important;
+  font-size: 0.8em !important;
+  color: #40916c !important;
+  background: #fff !important;
+  padding: 0 8px !important;
+  font-weight: 600 !important;
+}
+
+/* Esconder label quando select tem valor selecionado */
+.form-group select:not([value=""]):not(:focus):valid + label {
+  top: -8px;
+  left: 15px;
+  font-size: 0.8em;
+  color: #40916c;
+  background: #fff;
+  padding: 0 8px;
+  font-weight: 600;
+}
+
+/* Botão interativo */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #40916c 0%, #2d6a4f 100%);
+  color: #fff;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(64, 145, 108, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Confirmação animada */
+#confirmation {
+  background: linear-gradient(135deg, #40916c, #52b788);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
+  margin-top: 20px;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#confirmation.show {
+  transform: scale(1);
+}
+
+/* Indicador de progresso */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: #e9ecef;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #40916c, #52b788);
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
 body.modal-open {
   overflow: hidden;
 }
+
+
 
 /* ======= ANIMATIONS ======= */
 @keyframes fadeInUp {
@@ -620,9 +801,10 @@ body.modal-open {
     margin-bottom: 25px;
   }
   
-  .modal-content {
+.modal-content {
     max-width: 95vw;
     margin: 20px auto;
+    padding: 30px 20px;
   }
   
   nav {
@@ -633,4 +815,5 @@ body.modal-open {
     padding: 6px 12px;
     font-size: 0.9em;
   }
+}
 }

@@ -39,25 +39,52 @@
   </section>
 
   <!-- ======= MODAL ======= -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="closeModalBtn">&times;</span>
-      <h2>Post a Help Request or Offer</h2>
-      <form id="helpForm">
-        <input type="text" id="name" placeholder="Your name" required>
-        <select id="type">
-          <option value="request">Request Help</option>
-          <option value="offer">Offer Help</option>
-        </select>
-        <input type="text" id="description" placeholder="Describe what you need/offer" required>
-        <input type="text" id="contact" placeholder="Contact info" required>
-        <button type="submit">Post</button>
-      </form>
-      <div id="confirmation" style="display:none;">
-        Thank you! Your post has been submitted.
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn">&times;</span>
+    
+    <!-- Barra de progresso -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    
+    <h2>🏠 Post a Help Request or Offer</h2>
+    
+    <form id="helpForm">
+      <div class="form-group">
+        <input type="text" id="name" placeholder=" " required>
+        <label for="name">Your Name</label>
       </div>
+      
+      <div class="form-group">
+        <select id="type" required>
+          <option value="">Choose type...</option>
+          <option value="request">🙋‍♀️ Request Help</option>
+          <option value="offer">🤝 Offer Help</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <textarea id="description" placeholder=" " rows="3" required></textarea>
+        <label for="description">Description</label>
+      </div>
+      
+      <div class="form-group">
+        <input type="text" id="contact" placeholder=" " required>
+        <label for="contact">Contact Info</label>
+      </div>
+      
+      <button type="submit" class="submit-btn">
+        <span id="btnText">Submit Post</span>
+      </button>
+    </form>
+    
+    <div id="confirmation" style="display:none;">
+      <h3>🎉 Success!</h3>
+      <p>Thank you! Your post has been submitted to the community.</p>
     </div>
   </div>
+</div>
 
   <script src="script.js"></script>
 </body>
