@@ -62,7 +62,7 @@ if (closeModalBtn) {
 }
 
 window.onclick = function(event) {
-  if (event.target == modal) {
+  if (event.target === modal) {
     modal.classList.remove('show');
     setTimeout(() => {
       modal.style.display = 'none';
