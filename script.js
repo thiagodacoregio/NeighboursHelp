@@ -10,7 +10,7 @@ const progressFill = document.getElementById('progressFill');
 const contactForm = document.getElementById('contactForm');
 const contactConfirmation = document.getElementById('contactConfirmation');
 
-// Função para atualizar barra de progresso
+// Function to update progress bar
 function updateProgress() {
   const inputs = helpForm.querySelectorAll('input[required], select[required], textarea[required]');
   let filled = 0;
@@ -71,7 +71,7 @@ window.onclick = function(event) {
   }
 };
 
-// Atualizar progresso em tempo real
+// Update progress in real time
 if (helpForm) {
   const formInputs = helpForm.querySelectorAll('input, select, textarea');
   formInputs.forEach(input => {
@@ -112,7 +112,7 @@ if (helpForm) {
   };
 }
 
-// Função para controlar labels flutuantes
+// Function to control floating labels
 function handleFloatingLabels() {
   const formGroups = document.querySelectorAll('.form-group');
 
@@ -121,9 +121,9 @@ function handleFloatingLabels() {
     const label = group.querySelector('label');
 
     if (input && label) {
-      // Função para mover label
+      // Function to move label
       function moveLabel() {
-        // Para select, verificar se tem valor selecionado diferente de vazio
+        // For select, check if it has a selected value other than empty
         if (input.tagName === 'SELECT') {
           if (input.value !== '' && input.value !== 'Choose type...') {
             group.classList.add('has-value');
@@ -131,7 +131,7 @@ function handleFloatingLabels() {
             group.classList.remove('has-value');
           }
         } else {
-          // Para input e textarea
+          // To input and textarea
           if (input.value !== '' || input === document.activeElement) {
             label.style.top = '-8px';
             label.style.left = '15px';
@@ -158,13 +158,13 @@ function handleFloatingLabels() {
       input.addEventListener('input', moveLabel);
       input.addEventListener('change', moveLabel);
 
-      // Verificar estado inicial
+      // Check initial status
       moveLabel();
     }
   });
 }
 
-// Chamar a função quando o modal abrir
+// Call the function when the modal opens
 openModalBtns.forEach(btn => {
   if (btn) {
     btn.onclick = function(e) {
