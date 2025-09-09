@@ -5,6 +5,13 @@ const closeModalBtn = document.getElementById('closeModalBtn');
 const helpForm = document.getElementById('helpForm');
 const confirmation = document.getElementById('confirmation');
 const progressFill = document.getElementById('progressFill');
+// Login/Register functionality
+const loginForm = document.getElementById('loginForm');
+const registerForm = document.getElementById('registerForm');
+const showRegister = document.getElementById('showRegister');
+const toggleText = document.getElementById('toggleText');
+const authModal = document.getElementById('authModal');
+const closeAuthModal = document.getElementById('closeAuthModal');
 
 // Contact form functionality
 const contactForm = document.getElementById('contactForm');
@@ -217,3 +224,162 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Toggle between login and register
+if (showRegister) {
+  showRegister.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    if (loginForm.style.display !== 'none') {
+      // Show register form
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'block';
+      toggleText.innerHTML = 'Already have an account? <a href="#" id="showLogin">Sign in here</a>';
+      
+      // Re-attach event listener for show login
+      document.getElementById('showLogin').addEventListener('click', (e) => {
+        e.preventDefault();
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        toggleText.innerHTML = 'Don\'t have an account? <a href="#" id="showRegister">Sign up here</a>';
+        
+        // Re-attach event listener for show register
+        document.getElementById('showRegister').addEventListener('click', arguments.callee);
+      });
+    }
+  });
+}
+
+// Password toggle functionality
+const togglePassword = document.getElementById('togglePassword');
+const toggleRegisterPassword = document.getElementById('toggleRegisterPassword');
+
+if (togglePassword) {
+  togglePassword.addEventListener('click', () => {
+    const passwordInput = document.getElementById('loginPassword');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+  });
+}
+
+if (toggleRegisterPassword) {
+  toggleRegisterPassword.addEventListener('click', () => {
+    const passwordInput = document.getElementById('registerPassword');
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+    toggleRegisterPassword.textContent = type === 'password' ? '👁️' : '🙈';
+  });
+}
+
+// Login form submission
+if (loginForm) {
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const btnText = document.getElementById('loginBtnText');
+    const loader = loginForm.querySelector('.btn-loader');
+    
+    // Show loading
+    btnText.style.display = 'none';
+    loader.style.display = 'block';
+    
+    // Simulate API call
+    setTimeout(() => {
+      btnText.style.display = 'block';
+      loader.style.display = 'none';
+      
+      // Show success modal
+      authModal.style.display = 'block';
+      setTimeout(() => {
+        authModal.classList.add('show');
+        document.getElementById('authSuccess').style.display = 'block';
+      }, 10);
+      
+      // Store login state
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', document.getElementById('loginEmail').value);
+    }, 2000);
+  });
+}
+
+// Register form submission
+if (registerForm) {
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+    
+    const btnText = document.getElementById('registerBtnText');
+    const loader = registerForm.querySelector('.btn-loader');
+    
+    // Show loading
+    btnText.style.display = 'none';
+    loader.style.display = 'block';
+    
+    // Simulate API call
+    setTimeout(() => {
+      btnText.style.display = 'block';
+      loader.style.display = 'none';
+      
+      // Show success modal
+      authModal.style.display = 'block';
+      setTimeout(() => {
+        authModal.classList.add('show');
+        document.getElementById('registerSuccess').style.display = 'block';
+      }, 10);
+      
+      // Store login state
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('userEmail', document.getElementById('registerEmail').value);
+    }, 2000);
+  });
+}
+
+// Close auth modal
+if (closeAuthModal) {
+  closeAuthModal.addEventListener('click', () => {
+    authModal.classList.remove('show');
+    setTimeout(() => {
+      authModal.style.display = 'none';
+    }, 300);
+  });
+}
+
+// Handle floating labels for auth forms
+if (document.querySelector('.auth-form')) {
+  const authInputs = document.querySelectorAll('.auth-form input');
+  authInputs.forEach(input => {
+    const label = input.nextElementSibling;
+    
+    function handleLabel() {
+      if (input.value !== '' || input === document.activeElement) {
+        label.style.top = '-8px';
+        label.style.left = '15px';
+        label.style.fontSize = '0.8em';
+        label.style.color = '#40916c';
+        label.style.background = '#fff';
+        label.style.padding = '0 8px';
+        label.style.fontWeight = '600';
+      } else {
+        label.style.top = '15px';
+        label.style.left = '20px';
+        label.style.fontSize = '1em';
+        label.style.color = '#666';
+        label.style.background = 'transparent';
+        label.style.padding = '0';
+        label.style.fontWeight = 'normal';
+      }
+    }
+    
+    input.addEventListener('focus', handleLabel);
+    input.addEventListener('blur', handleLabel);
+    input.addEventListener('input', handleLabel);
+  });
+}
