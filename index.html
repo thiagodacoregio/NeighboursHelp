@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>NeighboursHelp - Community Support Platform</title>
@@ -19,6 +19,7 @@
         <a href="about.html" class="nav-link">About</a>
         <a href="howitworks.html" class="nav-link">How it Works</a>
         <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
         <a href="login.html" class="nav-link">Login</a>
       </nav>
     </div>
@@ -30,7 +31,7 @@
       <div class="hero-left">
         <h1>NeighboursHelp</h1>
         <p>Building stronger communities through mutual support and connection.</p>
-        <button class="cta-btn" id="openModalBtn">Get Started</button>
+        <a href="login.html" class="cta-btn">Get Started</a>
         <a href="about.html" class="cta-btn secondary">Learn More</a>
       </div>
       <div class="hero-right">
@@ -40,63 +41,60 @@
   </section>
 
   <!-- ======= MODAL ======= -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeModalBtn">&times;</span>
-    
-    <!-- Barra de progresso -->
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-    
-    <h2>🏠 Post a Help Request or Offer</h2>
-    
-    <form id="helpForm">
-      <div class="form-group">
-        <input type="text" id="name" placeholder=" " required>
-        <label for="name">Your Name</label>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+
+      <!-- Barra de progresso -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
       </div>
-      
-      <div class="form-group">
-        <select id="type" required>
-          <option value="">Choose type...</option>
-          <option value="request">🙋‍♀️ Request Help</option>
-          <option value="offer">🤝 Offer Help</option>
-        </select>
+
+      <h2>🏠 Post a Help Request or Offer</h2>
+
+      <form id="helpForm">
+        <div class="form-group">
+          <input type="text" id="name" placeholder=" " required>
+          <label for="name">Your Name</label>
+        </div>
+
+        <div class="form-group">
+          <select id="type" required>
+            <option value="">Choose type...</option>
+            <option value="request">🙋‍♀️ Request Help</option>
+            <option value="offer">🤝 Offer Help</option>
+          </select>
+          <label for="type">Type</label>
+        </div>
+
+        <div class="form-group">
+          <textarea id="description" placeholder=" " rows="3" required></textarea>
+          <label for="description">Description</label>
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="contact" placeholder=" " required>
+          <label for="contact">Contact Info</label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <span id="btnText">Submit Post</span>
+        </button>
+      </form>
+
+      <div id="confirmation" style="display:none;">
+        <h3>🎉 Success!</h3>
+        <p>Thank you! Your post has been submitted to the community.</p>
       </div>
-      
-      <div class="form-group">
-        <textarea id="description" placeholder=" " rows="3" required></textarea>
-        <label for="description">Description</label>
-      </div>
-      
-      <div class="form-group">
-        <input type="text" id="contact" placeholder=" " required>
-        <label for="contact">Contact Info</label>
-      </div>
-      
-      <button type="submit" class="submit-btn">
-        <span id="btnText">Submit Post</span>
-      </button>
-    </form>
-    
-    <div id="confirmation" style="display:none;">
-      <h3>🎉 Success!</h3>
-      <p>Thank you! Your post has been submitted to the community.</p>
     </div>
   </div>
-</div>
 
   <!-- ======= FOOTER ======= -->
   <footer>
     <div class="container">
       <p>&copy; 2025 NeighboursHelp. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook"><img src="./img/icons/facebook-logo.svg" alt="Facebook"></a>
-        <a href="#" aria-label="LinkedIn"><img src="./img/icons/linkedin.svg" alt="LinkedIn"></a>
-        <a href="#" aria-label="Instagram"><img src="./img/icons/instagram-logo.svg" alt="Instagram"></a>
-      </div>
     </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
