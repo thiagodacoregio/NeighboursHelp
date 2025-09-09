@@ -1,4 +1,3 @@
-// ======= VARIABLES AND CONSTANTS =======
 // Modal functionality
 const openModalBtns = document.querySelectorAll('#openModalBtn');
 const modal = document.getElementById('modal');
@@ -210,8 +209,9 @@ if (helpForm) {
     const contact = document.getElementById('contact').value;
     
     // Add new post to array
+    const nextId = posts.length ? Math.max(...posts.map(p => p.id)) + 1 : 1;
     const newPost = {
-      id: posts.length + 1,
+      id: nextId,
       name: name,
       type: type,
       description: description,
@@ -441,27 +441,19 @@ function formatDate(dateString) {
 function createPostCard(post) {
   const typeIcon = post.type === 'request' ? '🙋‍♀️' : '🤝';
   const typeText = post.type === 'request' ? 'Help Request' : 'Help Offer';
-  
   return `
-    <div class="post-card" data-type="${post.type}" data-id="${post.id}">
+    <div class="post-card" id="post-${post.id}">
       <div class="post-header">
-        <span class="post-type ${post.type}">
-          ${typeIcon} ${typeText}
-        </span>
+        <span class="post-type">${typeIcon} ${typeText}</span>
         <span class="post-date">${formatDate(post.date)}</span>
       </div>
-      <div class="post-author">${post.name}</div>
-      <div class="post-description">${post.description}</div>
-      <div class="post-contact">
-        📞 Contact: ${post.contact}
-      </div>
+      <h3 class="post-name">${post.name}</h3>
+      <p class="post-desc">${post.description}</p>
+      <p class="post-contact">📞 Contact: ${post.contact}</p>
       <div class="post-actions">
-        <button class="action-btn primary" onclick="contactPerson('${post.contact}')">
-          💬 Contact
-        </button>
-        <button class="action-btn" onclick="sharePost(${post.id})">
-          📤 Share
-        </button>
+        <button class="btn btn-contact" onclick="contactPerson('${post.contact}')">💬 Contact</button>
+        <button class="btn btn-share" onclick="sharePost(${post.id})">📤 Share</button>
+        <button class="btn btn-delete" onclick="deletePost(${post.id})" title="Delete post">🗑️ Delete</button>
       </div>
     </div>
   `;
@@ -481,6 +473,19 @@ function renderPosts(postsToRender = posts) {
     emptyState.style.display = 'none';
     postsGrid.innerHTML = postsToRender.map(post => createPostCard(post)).join('');
   }
+}
+
+function deletePost(postId) {
+  if (!confirm('Tem certeza que deseja deletar este post?')) return;
+
+  const index = posts.findIndex(p => p.id === postId);
+  if (index === -1) return;
+
+  posts.splice(index, 1); // remove do array
+
+  // Atualiza UI
+  updateStats();
+  renderPosts();
 }
 
 function filterPosts(filterType) {

@@ -796,7 +796,6 @@ footer .container {
     grid-template-columns: 1fr;
   }
   
-  /* ← ADICIONE ESTAS LINHAS */
   .about-text,
   .contact-info,
   .contact-form {
@@ -839,7 +838,7 @@ footer .container {
   }
 }
 
-/* ======= DASHBOARD SECTION CORRIGIDO ======= */
+/* ======= DASHBOARD SECTION ======= */
 .dashboard-section {
   padding: 120px 0 60px 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ee 100%);
@@ -1129,6 +1128,140 @@ footer .container {
 .empty-state p {
   margin-bottom: 25px;
   font-size: 1.1em;
+}
+
+/* Container do grid de posts */
+#postsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Card do post */
+.post-card {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Hover / foco leve no card */
+.post-card:hover,
+.post-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+/* Cabeçalho do card: tipo e data */
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.post-type {
+  font-weight: 600;
+  color: #0f766e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Nome e descrição */
+.post-name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.post-desc {
+  margin: 0;
+  color: #374151;
+  line-height: 1.35;
+}
+
+/* Contato */
+.post-contact {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* Ações (botões) */
+.post-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+/* Botões base */
+.post-actions .btn {
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.12s ease, transform 0.08s ease;
+}
+
+/* Estilos individuais */
+.btn-contact {
+  background: #e6fffa;
+  color: #056162;
+}
+
+.btn-contact:hover { background: #cff7ef; transform: translateY(-1px); }
+
+.btn-share {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.btn-share:hover { background: #e0e7ff; transform: translateY(-1px); }
+
+/* Botão deletar — destaque em vermelho */
+.btn-delete {
+  background: #fff1f2;
+  color: #b91c1c;
+  border: 1px solid rgba(185, 28, 28, 0.12);
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+  transform: translateY(-1px);
+}
+
+/* Acessibilidade: foco */
+.post-actions .btn:focus {
+  outline: 3px solid rgba(59,130,246,0.18);
+  outline-offset: 2px;
+}
+
+/* Empty state*/
+#emptyState {
+  text-align: center;
+  color: #6b7280;
+  padding: 24px;
 }
 
 /* Responsive */
@@ -1574,5 +1707,12 @@ body.modal-open {
   
   .filter-buttons {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-actions .btn {
+    flex: 1 1 48%;
+    justify-content: center;
   }
 }
