@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - NeighboursHelp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ======= HEADER ======= -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="./img/logo-NB.webp" alt="NeighboursHelp logo" class="logo-img">
+        NeighboursHelp
+      </div>
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="howitworks.html" class="nav-link">How it Works</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link active">Dashboard</a>
+        <a href="login.html" class="nav-link">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= DASHBOARD SECTION ======= -->
+  <section class="dashboard-section">
+    <div class="container">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <div class="welcome-message">
+          <h1>🏠 Community Dashboard</h1>
+          <p>Manage and view all help requests and offers in your neighborhood</p>
+        </div>
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-number" id="totalRequests">0</div>
+            <div class="stat-label">Help Requests</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="totalOffers">0</div>
+            <div class="stat-label">Help Offers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="totalActive">0</div>
+            <div class="stat-label">Active Posts</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter and Search -->
+      <div class="dashboard-controls">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="🔍 Search posts...">
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Posts</button>
+          <button class="filter-btn" data-filter="request">🙋‍♀️ Requests</button>
+          <button class="filter-btn" data-filter="offer">🤝 Offers</button>
+        </div>
+        <button class="add-post-btn" id="openModalBtn">
+          ➕ Add New Post
+        </button>
+      </div>
+
+      <!-- Posts Grid -->
+      <div class="posts-grid" id="postsGrid">
+        <!-- Posts will be dynamically loaded here -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">📭</div>
+        <h3>No posts found</h3>
+        <p>Be the first to post a help request or offer!</p>
+        <button class="cta-btn" id="openModalBtn2">Create First Post</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= MODAL ======= -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModalBtn">&times;</span>
+      
+      <!-- Barra de progresso -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      
+      <h2>🏠 Post a Help Request or Offer</h2>
+      
+      <form id="helpForm">
+        <div class="form-group">
+          <input type="text" id="name" placeholder=" " required>
+          <label for="name">Your Name</label>
+        </div>
+        
+        <div class="form-group">
+          <select id="type" required>
+            <option value="">Choose type...</option>
+            <option value="request">🙋‍♀️ Request Help</option>
+            <option value="offer">🤝 Offer Help</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <textarea id="description" placeholder=" " rows="3" required></textarea>
+          <label for="description">Description</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="contact" placeholder=" " required>
+          <label for="contact">Contact Info</label>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          <span id="btnText">Submit Post</span>
+        </button>
+      </form>
+      
+      <div id="confirmation" style="display:none;">
+        <h3>🎉 Success!</h3>
+        <p>Thank you! Your post has been submitted to the community.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
