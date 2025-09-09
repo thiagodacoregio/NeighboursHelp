@@ -26,15 +26,15 @@ const toggleRegisterPassword = document.getElementById('toggleRegisterPassword')
 let posts = [
   {
     id: 1,
-    name: "Maria Silva",
+    name: "Joseph J.",
     type: "request",
     description: "Need help moving furniture to my new apartment this weekend. Heavy items like sofa and wardrobe.",
-    contact: "maria.silva@email.com",
+    contact: "joseph.j@email.com",
     date: "2025-01-08"
   },
   {
     id: 2,
-    name: "João Santos",
+    name: "Daniel J. Harrigan",
     type: "offer",
     description: "Offering free tutoring in mathematics for high school students. Available weekday evenings.",
     contact: "+1 (555) 123-4567",
@@ -42,15 +42,15 @@ let posts = [
   },
   {
     id: 3,
-    name: "Ana Costa",
+    name: "Larry B. Ryals",
     type: "request",
     description: "Looking for someone to walk my dog while I'm recovering from surgery. Small friendly dog.",
-    contact: "ana.costa@email.com",
+    contact: "larry.ryals@email.com",
     date: "2025-01-06"
   },
   {
     id: 4,
-    name: "Pedro Lima",
+    name: "Bernard G. Smith",
     type: "offer",
     description: "Professional plumber offering free minor repairs for elderly neighbors. Basic fixes only.",
     contact: "+1 (555) 987-6543",
@@ -58,10 +58,10 @@ let posts = [
   },
   {
     id: 5,
-    name: "Sofia Rodriguez",
+    name: "Angela L. Vogel",
     type: "request",
     description: "Need babysitting help for my 5-year-old daughter on Saturday evening. Experienced sitter preferred.",
-    contact: "sofia.rodriguez@email.com",
+    contact: "angela.vogel@email.com",
     date: "2025-01-04"
   }
 ];
